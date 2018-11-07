@@ -1,0 +1,12 @@
+logging:
+  level:
+    org.springframework.web: INFO
+    com.github.binarywang.demo.wx.mp: DEBUG
+    me.chanjar.weixin: DEBUG
+wx:
+  mp:
+    configs:
+      - appId: wxcb6063d8a90280c6 （一个公众号的appid）
+        secret: f8648887932a3574e4f80b713a12b690（公众号的appsecret）
+        token: fdse （接口配置里的Token值）
+        aesKey: fdse （接口配置里的EncodingAESKey值）
