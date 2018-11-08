@@ -48,32 +48,37 @@ public class WxMenuController {
     @GetMapping("/create")
     public String menuCreateSample(@PathVariable String appid) throws WxErrorException, MalformedURLException {
         WxMenu menu = new WxMenu();
+
         WxMenuButton button1 = new WxMenuButton();
-        button1.setType(MenuButtonType.CLICK);
-        button1.setName("今日歌曲");
-        button1.setKey("V1001_TODAY_MUSIC");
-
-//        WxMenuButton button2 = new WxMenuButton();
-//        button2.setType(WxConsts.BUTTON_MINIPROGRAM);
-//        button2.setName("小程序");
-//        button2.setAppId("wx286b93c14bbf93aa");
-//        button2.setPagePath("pages/lunar/index.html");
-//        button2.setUrl("http://mp.weixin.qq.com");
-
+        button1.setName("服务");
+        WxMenuButton button2 = new WxMenuButton();
+        button2.setName("众包");
         WxMenuButton button3 = new WxMenuButton();
-        button3.setName("服务");
+        button3.setType(MenuButtonType.CLICK);
+        button3.setName("平台介绍");
+        button3.setKey("V1001_TODAY_MUSIC");
+
+
 
         menu.getButtons().add(button1);
-//        menu.getButtons().add(button2);
+        menu.getButtons().add(button2);
         menu.getButtons().add(button3);
 
-        WxMenuButton button33 = new WxMenuButton();
-        button33.setType(MenuButtonType.VIEW);
-        button33.setName("调用服务");
+        WxMenuButton button11 = new WxMenuButton();
+        button11.setType(MenuButtonType.VIEW);
+        button11.setName("调用服务");
 
-        WxMenuButton button34 = new WxMenuButton();
-        button34.setType(MenuButtonType.VIEW);
-        button34.setName("我的服务");
+        WxMenuButton button12 = new WxMenuButton();
+        button12.setType(MenuButtonType.VIEW);
+        button12.setName("我的服务");
+
+        WxMenuButton button21 = new WxMenuButton();
+        button21.setType(MenuButtonType.VIEW);
+        button21.setName("可接众包");
+
+        WxMenuButton button22 = new WxMenuButton();
+        button22.setType(MenuButtonType.VIEW);
+        button22.setName("我的众包");
 
         ServletRequestAttributes servletRequestAttributes =
             (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
@@ -84,17 +89,22 @@ public class WxMenuController {
                 .oauth2buildAuthorizationUrl(
                     String.format("%s://%s/wx/redirect/%s/all_service", requestURL.getProtocol(), requestURL.getHost(), appid),
                     WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
-            button33.setUrl(url33);
+            button11.setUrl(url33);
 
             String url34 = WxMpConfiguration.getMpServices().get(appid)
                 .oauth2buildAuthorizationUrl(
                     String.format("%s://%s/wx/redirect/%s/my_service", requestURL.getProtocol(), requestURL.getHost(), appid),
                     WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
-            button34.setUrl(url34);
+            button12.setUrl(url34);
+
+            button21.setUrl("https://www.baidu.com/");
+            button22.setUrl("https://www.baidu.com/");
         }
 
-        button3.getSubButtons().add(button33);
-        button3.getSubButtons().add(button34);
+        button1.getSubButtons().add(button11);
+        button1.getSubButtons().add(button12);
+        button2.getSubButtons().add(button21);
+        button2.getSubButtons().add(button22);
 
         return WxMpConfiguration.getMpServices().get(appid).getMenuService().menuCreate(menu);
     }
