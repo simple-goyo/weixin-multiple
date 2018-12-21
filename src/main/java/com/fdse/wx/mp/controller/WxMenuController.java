@@ -87,13 +87,13 @@ public class WxMenuController {
             URL requestURL = new URL(request.getRequestURL().toString());
             String url33 = WxMpConfiguration.getMpServices().get(appid)
                 .oauth2buildAuthorizationUrl(
-                    String.format("%s://%s/wx/redirect/%s/all_service", requestURL.getProtocol(), requestURL.getHost(), appid),
+                    String.format("%s://%s/wm/wx/redirect/%s/all_service", requestURL.getProtocol(), requestURL.getHost(), appid),
                     WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
             button11.setUrl(url33);
 
             String url34 = WxMpConfiguration.getMpServices().get(appid)
                 .oauth2buildAuthorizationUrl(
-                    String.format("%s://%s/wx/redirect/%s/my_service", requestURL.getProtocol(), requestURL.getHost(), appid),
+                    String.format("%s://%s/wm/wx/redirect/%s/my_service", requestURL.getProtocol(), requestURL.getHost(), appid),
                     WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
             button12.setUrl(url34);
 

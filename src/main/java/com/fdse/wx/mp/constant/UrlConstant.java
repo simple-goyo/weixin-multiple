@@ -16,8 +16,9 @@ public class UrlConstant {
      * App后端url
      */
 //    public static final String APP_BACK_END_IP = "119.29.194.211";//142,148给前端返回IP地址
-    public static final String APP_BACK_END_IP = "192.168.1.196";//142,148给前端返回IP地址
-    public static final String APP_BACK_END_PORT = "8081";
+//    public static final String APP_BACK_END_IP = "192.168.1.196";//142,148给前端返回IP地址
+    public static final String APP_BACK_END_IP = "www.fudanse.club";//142,148给前端返回IP地址
+    public static final String APP_BACK_END_PORT = "80/sc/";
 
     //微信注册用户信息页面
     public static final String APP_BACK_END_WX_REGISTER_HTML_= "wxr.html";
