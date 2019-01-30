@@ -39,17 +39,33 @@ public class WxMsgController {
      *
      * @return 如果是个性化菜单，则返回menuid，否则返回null
      */
-    @PostMapping("/sendTemplateMsg")
-    public String sendTemplateMsg(@PathVariable String appid) throws WxErrorException {
+    @RequestMapping("/sendTemplateMsg")
+    public String sendTemplateMsg(HttpServletRequest request,@PathVariable String appid) throws WxErrorException {
         WxMpTemplateMessage templateMessage = WxMpTemplateMessage.builder().toUser("o1l-Y1KcDyhECFiV15WIql7-MJzk")
-                .templateId("OEtHMkILLVI0xcqeDKq_aU3tZIXyzVBDesSN3HuLIIo").url("https://www.jianshu.com/p/cb69ce1e637f").build();
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy-MM-dd HH:mm:ss.SSS");
-        templateMessage.addData(new WxMpTemplateData("first", dateFormat.format(new Date()), "#FF00FF"));
-        templateMessage.addData(new WxMpTemplateData("keynote1",RandomStringUtils.randomAlphanumeric(100), "#FF00FF"));
-        templateMessage.addData(new WxMpTemplateData("keynote2",RandomStringUtils.randomAlphanumeric(100), "#FF00FF"));
-        templateMessage.addData(new WxMpTemplateData("keynote3",RandomStringUtils.randomAlphanumeric(100), "#FF00FF"));
-        templateMessage.addData(new WxMpTemplateData("remark", "eq", "#FF00FF"));
+                .templateId("KnzsPgO70DMEHBBIdIpro5Zbdg6MS5fat00ivyom0u0").url("https://www.jianshu.com/p/cb69ce1e637f").build();
+//        SimpleDateFormat dateFormat = new SimpleDateFormat(
+//                "yyyy-MM-dd HH:mm:ss.SSS");
+        templateMessage.addData(new WxMpTemplateData("description", request.getParameter("description"),"#FF00FF"));
+        templateMessage.addData(new WxMpTemplateData("location",request.getParameter("location"),"#FF00FF"));
+        templateMessage.addData(new WxMpTemplateData("duration",request.getParameter("duration"),"#FF00FF"));
+        templateMessage.addData(new WxMpTemplateData("bonus",request.getParameter("bonus"),"#FF00FF"));
+        templateMessage.addData(new WxMpTemplateData("person", request.getParameter("person"), "#FF00FF"));
+        String msgId=WxMpConfiguration.getMpServices().get(appid).getTemplateMsgService().sendTemplateMsg(templateMessage);
+
+        return msgId;
+//        return WxMpConfiguration.getMpServices().get(appid).getMenuService().menuCreate(menu);
+    }
+
+    @RequestMapping("/sendShortMsg")
+    public String sendShortMsg(HttpServletRequest request,@PathVariable String appid) throws WxErrorException {
+        String openId=request.getParameter("openId");
+        String wxContent=request.getParameter("wxContent");
+        String wxUrl=request.getParameter("wxUrl");
+        WxMpTemplateMessage templateMessage = WxMpTemplateMessage.builder().toUser(openId)
+                .templateId("2BREzDujeb9dGu7QZbpXnh1oG5M0j5-AhHeH2KQtGts").url(wxUrl).build();
+//        SimpleDateFormat dateFormat = new SimpleDateFormat(
+//                "yyyy-MM-dd HH:mm:ss.SSS");
+        templateMessage.addData(new WxMpTemplateData("wxContent", wxContent,"#FF00FF"));
         String msgId=WxMpConfiguration.getMpServices().get(appid).getTemplateMsgService().sendTemplateMsg(templateMessage);
 
         return msgId;

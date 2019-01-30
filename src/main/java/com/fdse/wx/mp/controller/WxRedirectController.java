@@ -29,7 +29,9 @@ public class WxRedirectController {
         WxMpOAuth2AccessToken accessToken = mpService.oauth2getAccessToken(code);
         WxMpUser user = mpService.oauth2getUserInfo(accessToken, null);
         String openId=user.getOpenId();
-        String getUserIdURL = UrlConstant.getAppBackEndServiceURL(UrlConstant.APP_BACK_END_GET_USERID_BY_OPENID);
+
+        //访问云上sc
+        String getUserIdURL = UrlConstant.getAppBackEndCloudServiceURL(UrlConstant.APP_BACK_END_GET_USERID_BY_OPENID);
         getUserIdURL+="openId="+openId;
         int userId = restTemplate.getForEntity(getUserIdURL, Integer.class).getBody();
         if(userId==-1){
@@ -44,6 +46,10 @@ public class WxRedirectController {
                 url = UrlConstant.getAppBackEndServiceURL(UrlConstant.APP_BACK_END_WX_ALL_SERVICE_HTML_);
             }else if("my_service".equals(redirectUrl)){
                 url = UrlConstant.getAppBackEndServiceURL(UrlConstant.APP_BACK_END_WX_MY_SERVICE_HTML_);
+            }else if("all_crowdsourcing".equals(redirectUrl)){
+                url = UrlConstant.getCrowdBackEndServiceURL(UrlConstant.CROWD_BACK_END_WX_ALL_CROWDSOURCING_);
+            }else if("my_crowdsourcing".equals(redirectUrl)){
+                url = UrlConstant.getCrowdBackEndServiceURL(UrlConstant.CROWD_BACK_END_WX_MY_CROWDSOURCING);
             }
             String redirectURL="redirect:"+url;
             return redirectURL;

@@ -85,20 +85,30 @@ public class WxMenuController {
         if (servletRequestAttributes != null) {
             HttpServletRequest request = servletRequestAttributes.getRequest();
             URL requestURL = new URL(request.getRequestURL().toString());
-            String url33 = WxMpConfiguration.getMpServices().get(appid)
+
+            String url11 = WxMpConfiguration.getMpServices().get(appid)
                 .oauth2buildAuthorizationUrl(
                     String.format("%s://%s/wm/wx/redirect/%s/all_service", requestURL.getProtocol(), requestURL.getHost(), appid),
                     WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
-            button11.setUrl(url33);
+            button11.setUrl(url11);
 
-            String url34 = WxMpConfiguration.getMpServices().get(appid)
+            String url12 = WxMpConfiguration.getMpServices().get(appid)
                 .oauth2buildAuthorizationUrl(
                     String.format("%s://%s/wm/wx/redirect/%s/my_service", requestURL.getProtocol(), requestURL.getHost(), appid),
                     WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
-            button12.setUrl(url34);
+            button12.setUrl(url12);
 
-            button21.setUrl("https://www.baidu.com/");
-            button22.setUrl("https://www.baidu.com/");
+            String url21 = WxMpConfiguration.getMpServices().get(appid)
+                    .oauth2buildAuthorizationUrl(
+                            String.format("%s://%s/wx/redirect/%s/all_crowdsourcing", requestURL.getProtocol(), requestURL.getHost(), appid),
+                            WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
+            button21.setUrl(url21);
+
+            String url22 = WxMpConfiguration.getMpServices().get(appid)
+                    .oauth2buildAuthorizationUrl(
+                            String.format("%s://%s/wx/redirect/%s/my_crowdsourcing", requestURL.getProtocol(), requestURL.getHost(), appid),
+                            WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
+            button22.setUrl(url22);
         }
 
         button1.getSubButtons().add(button11);
