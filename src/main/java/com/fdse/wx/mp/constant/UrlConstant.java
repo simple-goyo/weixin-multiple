@@ -107,7 +107,7 @@ public class UrlConstant {
      * 众包平台url
      */
     public static final String CROWD_BACK_END_IP = "192.168.1.168";//142,148给前端返回IP地址
-    public static final String CROWD_BACK_END_PORT = "8080";
+    public static final String CROWD_BACK_END_PORT = "8081";
 
 
     //微信所有众包
@@ -115,6 +115,9 @@ public class UrlConstant {
 
     //微信我的众包
     public static final String CROWD_BACK_END_WX_MY_CROWDSOURCING = "wx_my_service.html";
+
+    //微信众包接任务
+    public static final String CROWD_BACK_END_WX_ACCEPT_TASK= "AcceptSimpleTaskServlet";
 
 
     public static String getCrowdBackEndServiceURL(String service) {

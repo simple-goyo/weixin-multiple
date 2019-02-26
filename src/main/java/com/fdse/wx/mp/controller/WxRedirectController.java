@@ -50,6 +50,10 @@ public class WxRedirectController {
                 url = UrlConstant.getCrowdBackEndServiceURL(UrlConstant.CROWD_BACK_END_WX_ALL_CROWDSOURCING_);
             }else if("my_crowdsourcing".equals(redirectUrl)){
                 url = UrlConstant.getCrowdBackEndServiceURL(UrlConstant.CROWD_BACK_END_WX_MY_CROWDSOURCING);
+            }else if(redirectUrl.contains("AcceptTask")){
+                String taskId=redirectUrl.split("AcceptTask")[1];
+                attr.addAttribute("taskId",taskId);
+                url = UrlConstant.getCrowdBackEndServiceURL(UrlConstant.CROWD_BACK_END_WX_ACCEPT_TASK);
             }
             String redirectURL="redirect:"+url;
             return redirectURL;
