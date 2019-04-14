@@ -16,13 +16,20 @@ public class UrlConstant {
      * App后端url
      */
 //    public static final String APP_BACK_END_IP = "119.29.194.211";//142,148给前端返回IP地址
-    public static final String APP_BACK_END_IP = "192.168.1.120";//142,148给前端返回IP地址
-    //    public static final String APP_BACK_END_IP = "www.fudanse.club";//142,148给前端返回IP地址
-//    public static final String APP_BACK_END_PORT = "80/sc/";
-    public static final String APP_BACK_END_PORT = "8080/";
+//    public static final String APP_BACK_END_IP = "192.168.1.119";//142,148给前端返回IP地址
+//    public static final String APP_BACK_END_PORT = "8080/";
+    public static final String APP_BACK_END_IP = "www.fudanse.club";//142,148给前端返回IP地址
+    public static final String APP_BACK_END_PORT = "80/sc/";
+
 
     //微信注册用户信息页面
     public static final String APP_BACK_END_WX_REGISTER_HTML_ = "wxr.html";
+
+    //微信设备主页
+    public static final String APP_BACK_END_WX_DEVICE_HOME = "wx_device_home.html";
+
+    //微信服务主页
+    public static final String APP_BACK_END_WX_SERVICE_HOME = "wx_service_home.html";
 
     //微信调用服务页面
     public static final String APP_BACK_END_WX_ALL_SERVICE_HTML_ = "wx_all_service.html";
@@ -117,7 +124,7 @@ public class UrlConstant {
     public static final String CROWD_BACK_END_WX_MY_CROWDSOURCING = "wx_my_service.html";
 
     //微信众包接任务
-    public static final String CROWD_BACK_END_WX_ACCEPT_TASK= "AcceptSimpleTaskServlet";
+    public static final String CROWD_BACK_END_WX_ACCEPT_TASK = "AcceptSimpleTaskServlet";
 
 
     public static String getCrowdBackEndServiceURL(String service) {
@@ -125,32 +132,18 @@ public class UrlConstant {
         return serviceURL;
     }
 
-
     /**
-     * 定时任务平台
+     * 活动撮合平台url
      */
-    public static final String QUARTZ_IP = "119.29.194.211";//142
-    public static final String QUARTZ_PORT = "8080";
+    public static final String ACTIVITY_BACK_END_IP = "10.141.221.88";//142,148给前端返回IP地址
+    public static final String ACTIVITY_BACK_END_PORT = "8878";
 
-    //保存定时任务
-    public static final String QUARTZ_SAVE_SCHEDULE_JOB = "save-schedule-job.shtml";
+    //微信我的众包
+    public static final String ACTIVITY_BACK_END_ALL_ACTIVITY = "hfc_all_activity.html";
 
-    public static String getQuartzServiceURL(String service) {
-        String serviceURL = String.format("http://%s:%s/%s", QUARTZ_IP, QUARTZ_PORT, service);
-        return serviceURL;
-    }
 
-    /**
-     * 微信平台
-     */
-    public static final String WECHATE_IP = "119.29.194.211";//142
-    public static final String WECHATE_PORT = "8080";
-
-    //保存定时任务
-    public static final String WECHATE_SEND_MESSAGE = "sendMessage";
-
-    public static String getWeChatServiceURL(String service) {
-        String serviceURL = String.format("http://%s:%s/%s", WECHATE_IP, WECHATE_PORT, service);
+    public static String getActivityBackEndServiceURL(String service) {
+        String serviceURL = String.format("http://%s:%s/%s", ACTIVITY_BACK_END_IP, ACTIVITY_BACK_END_PORT, service);
         return serviceURL;
     }
 

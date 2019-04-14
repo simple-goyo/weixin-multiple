@@ -25,7 +25,7 @@ import static me.chanjar.weixin.common.api.WxConsts.*;
  */
 @Configuration
 @EnableConfigurationProperties(WxMpProperties.class)
-public class WxMpConfiguration {
+public class  WxMpConfiguration {
     private LogHandler logHandler;
     private NullHandler nullHandler;
     private KfSessionHandler kfSessionHandler;

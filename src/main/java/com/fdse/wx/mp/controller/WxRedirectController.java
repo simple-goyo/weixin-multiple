@@ -54,6 +54,12 @@ public class WxRedirectController {
                 String taskId=redirectUrl.split("AcceptTask")[1];
                 attr.addAttribute("taskId",taskId);
                 url = UrlConstant.getCrowdBackEndServiceURL(UrlConstant.CROWD_BACK_END_WX_ACCEPT_TASK);
+            }else if("device".equals(redirectUrl)){
+                url = UrlConstant.getAppBackEndServiceURL(UrlConstant.APP_BACK_END_WX_DEVICE_HOME);
+            }else if("service".equals(redirectUrl)){
+                url = UrlConstant.getAppBackEndServiceURL(UrlConstant.APP_BACK_END_WX_SERVICE_HOME);
+            }else if("activity".equals(redirectUrl)){
+                url = UrlConstant.getActivityBackEndServiceURL(UrlConstant.ACTIVITY_BACK_END_ALL_ACTIVITY);
             }
             String redirectURL="redirect:"+url;
             return redirectURL;

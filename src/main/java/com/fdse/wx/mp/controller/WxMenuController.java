@@ -50,13 +50,14 @@ public class WxMenuController {
         WxMenu menu = new WxMenu();
 
         WxMenuButton button1 = new WxMenuButton();
-        button1.setName("服务");
+        button1.setType(MenuButtonType.VIEW);
+        button1.setName("设备");
         WxMenuButton button2 = new WxMenuButton();
-        button2.setName("众包");
+        button2.setType(MenuButtonType.VIEW);
+        button2.setName("服务");
         WxMenuButton button3 = new WxMenuButton();
-        button3.setType(MenuButtonType.CLICK);
-        button3.setName("平台介绍");
-        button3.setKey("V1001_TODAY_MUSIC");
+        button3.setType(MenuButtonType.VIEW);
+        button3.setName("活动撮合");
 
 
 
@@ -64,21 +65,21 @@ public class WxMenuController {
         menu.getButtons().add(button2);
         menu.getButtons().add(button3);
 
-        WxMenuButton button11 = new WxMenuButton();
-        button11.setType(MenuButtonType.VIEW);
-        button11.setName("调用服务");
+//        WxMenuButton button11 = new WxMenuButton();
+//        button11.setType(MenuButtonType.VIEW);
+//        button11.setName("调用服务");
+//
+//        WxMenuButton button12 = new WxMenuButton();
+//        button12.setType(MenuButtonType.VIEW);
+//        button12.setName("我的服务");
 
-        WxMenuButton button12 = new WxMenuButton();
-        button12.setType(MenuButtonType.VIEW);
-        button12.setName("我的服务");
-
-        WxMenuButton button21 = new WxMenuButton();
-        button21.setType(MenuButtonType.VIEW);
-        button21.setName("可接众包");
-
-        WxMenuButton button22 = new WxMenuButton();
-        button22.setType(MenuButtonType.VIEW);
-        button22.setName("我的众包");
+//        WxMenuButton button21 = new WxMenuButton();
+//        button21.setType(MenuButtonType.VIEW);
+//        button21.setName("可接众包");
+//
+//        WxMenuButton button22 = new WxMenuButton();
+//        button22.setType(MenuButtonType.VIEW);
+//        button22.setName("我的众包");
 
         ServletRequestAttributes servletRequestAttributes =
             (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
@@ -86,35 +87,53 @@ public class WxMenuController {
             HttpServletRequest request = servletRequestAttributes.getRequest();
             URL requestURL = new URL(request.getRequestURL().toString());
 
-            String url11 = WxMpConfiguration.getMpServices().get(appid)
-                .oauth2buildAuthorizationUrl(
-                    String.format("%s://%s/wm/wx/redirect/%s/all_service", requestURL.getProtocol(), requestURL.getHost(), appid),
-                    WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
-            button11.setUrl(url11);
+//            String url11 = WxMpConfiguration.getMpServices().get(appid)
+//                .oauth2buildAuthorizationUrl(
+//                    String.format("%s://%s/wm/wx/redirect/%s/all_service", requestURL.getProtocol(), requestURL.getHost(), appid),
+//                    WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
+//            button11.setUrl(url11);
+//
+//            String url12 = WxMpConfiguration.getMpServices().get(appid)
+//                .oauth2buildAuthorizationUrl(
+//                    String.format("%s://%s/wm/wx/redirect/%s/my_service", requestURL.getProtocol(), requestURL.getHost(), appid),
+//                    WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
+//            button12.setUrl(url12);
+//
+//            String url21 = WxMpConfiguration.getMpServices().get(appid)
+//                    .oauth2buildAuthorizationUrl(
+//                            String.format("%s://%s/wm/wx/redirect/%s/all_crowdsourcing", requestURL.getProtocol(), requestURL.getHost(), appid),
+//                            WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
+//            button21.setUrl(url21);
+//
+//            String url22 = WxMpConfiguration.getMpServices().get(appid)
+//                    .oauth2buildAuthorizationUrl(
+//                            String.format("%s://%s/wm/wx/redirect/%s/my_crowdsourcing", requestURL.getProtocol(), requestURL.getHost(), appid),
+//                            WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
+//            button22.setUrl(url22);
 
-            String url12 = WxMpConfiguration.getMpServices().get(appid)
-                .oauth2buildAuthorizationUrl(
-                    String.format("%s://%s/wm/wx/redirect/%s/my_service", requestURL.getProtocol(), requestURL.getHost(), appid),
-                    WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
-            button12.setUrl(url12);
-
-            String url21 = WxMpConfiguration.getMpServices().get(appid)
+            String url1 = WxMpConfiguration.getMpServices().get(appid)
                     .oauth2buildAuthorizationUrl(
-                            String.format("%s://%s/wx/redirect/%s/all_crowdsourcing", requestURL.getProtocol(), requestURL.getHost(), appid),
+                            String.format("%s://%s/wm/wx/redirect/%s/device", requestURL.getProtocol(), requestURL.getHost(), appid),
                             WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
-            button21.setUrl(url21);
+            button1.setUrl(url1);
 
-            String url22 = WxMpConfiguration.getMpServices().get(appid)
+            String url2 = WxMpConfiguration.getMpServices().get(appid)
                     .oauth2buildAuthorizationUrl(
-                            String.format("%s://%s/wx/redirect/%s/my_crowdsourcing", requestURL.getProtocol(), requestURL.getHost(), appid),
+                            String.format("%s://%s/wm/wx/redirect/%s/service", requestURL.getProtocol(), requestURL.getHost(), appid),
                             WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
-            button22.setUrl(url22);
+            button2.setUrl(url2);
+
+            String url3 = WxMpConfiguration.getMpServices().get(appid)
+                    .oauth2buildAuthorizationUrl(
+                            String.format("%s://%s/wm/wx/redirect/%s/activity", requestURL.getProtocol(), requestURL.getHost(), appid),
+                            WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
+            button3.setUrl(url3);
         }
 
-        button1.getSubButtons().add(button11);
-        button1.getSubButtons().add(button12);
-        button2.getSubButtons().add(button21);
-        button2.getSubButtons().add(button22);
+//        button1.getSubButtons().add(button11);
+//        button1.getSubButtons().add(button12);
+//        button2.getSubButtons().add(button21);
+//        button2.getSubButtons().add(button22);
 
         return WxMpConfiguration.getMpServices().get(appid).getMenuService().menuCreate(menu);
     }
