@@ -16,10 +16,10 @@ public class UrlConstant {
      * App后端url
      */
 //    public static final String APP_BACK_END_IP = "119.29.194.211";//142,148给前端返回IP地址
-//    public static final String APP_BACK_END_IP = "192.168.1.119";//142,148给前端返回IP地址
-//    public static final String APP_BACK_END_PORT = "8080/";
-    public static final String APP_BACK_END_IP = "www.fudanse.club";//142,148给前端返回IP地址
-    public static final String APP_BACK_END_PORT = "80/sc/";
+    public static final String APP_BACK_END_IP = "192.168.1.168";//142,148给前端返回IP地址
+    public static final String APP_BACK_END_PORT = "8080/";
+//    public static final String APP_BACK_END_IP = "www.fudanse.club";//142,148给前端返回IP地址
+//    public static final String APP_BACK_END_PORT = "80/sc/";
 
 
     //微信注册用户信息页面
@@ -113,7 +113,7 @@ public class UrlConstant {
     /**
      * 众包平台url
      */
-    public static final String CROWD_BACK_END_IP = "192.168.1.168";//142,148给前端返回IP地址
+    public static final String CROWD_BACK_END_IP = "192.168.1.115";//142,148给前端返回IP地址
     public static final String CROWD_BACK_END_PORT = "8081";
 
 
@@ -124,7 +124,7 @@ public class UrlConstant {
     public static final String CROWD_BACK_END_WX_MY_CROWDSOURCING = "wx_my_service.html";
 
     //微信众包接任务
-    public static final String CROWD_BACK_END_WX_ACCEPT_TASK = "AcceptSimpleTaskServlet";
+    public static final String CROWD_BACK_END_WX_ACCEPT_TASK = "simplecrowdsourcing_war_exploded/accept/accepttask";
 
 
     public static String getCrowdBackEndServiceURL(String service) {
